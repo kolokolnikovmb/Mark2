@@ -18,6 +18,8 @@
 		1C73BD4F29EE91ED001B1CF8 /* ControlButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73BD4E29EE91ED001B1CF8 /* ControlButtonsView.swift */; };
 		1C73BD5129EE9B0C001B1CF8 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73BD5029EE9B0C001B1CF8 /* MainViewModel.swift */; };
 		1C73BD5329EE9C0E001B1CF8 /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73BD5229EE9C0E001B1CF8 /* WebViewWrapper.swift */; };
+		1C73BD5529EEED04001B1CF8 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73BD5429EEED04001B1CF8 /* TabViewModel.swift */; };
+		1C73BD5729EEF14A001B1CF8 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73BD5629EEF14A001B1CF8 /* TabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		1C73BD4E29EE91ED001B1CF8 /* ControlButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonsView.swift; sourceTree = "<group>"; };
 		1C73BD5029EE9B0C001B1CF8 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1C73BD5229EE9C0E001B1CF8 /* WebViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewWrapper.swift; sourceTree = "<group>"; };
+		1C73BD5429EEED04001B1CF8 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
+		1C73BD5629EEF14A001B1CF8 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 				1C73BD4C29EE91DD001B1CF8 /* AddressBarView.swift */,
 				1C73BD4E29EE91ED001B1CF8 /* ControlButtonsView.swift */,
 				1C73BD5229EE9C0E001B1CF8 /* WebViewWrapper.swift */,
+				1C73BD5629EEF14A001B1CF8 /* TabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				1C73BD5029EE9B0C001B1CF8 /* MainViewModel.swift */,
+				1C73BD5429EEED04001B1CF8 /* TabViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -311,9 +317,11 @@
 			files = (
 				1C73BD5129EE9B0C001B1CF8 /* MainViewModel.swift in Sources */,
 				1C73BD4D29EE91DD001B1CF8 /* AddressBarView.swift in Sources */,
+				1C73BD5729EEF14A001B1CF8 /* TabView.swift in Sources */,
 				1C73BD2029EE8903001B1CF8 /* MainView.swift in Sources */,
 				1C73BD4F29EE91ED001B1CF8 /* ControlButtonsView.swift in Sources */,
 				1C73BD1E29EE8903001B1CF8 /* Markz1_0App.swift in Sources */,
+				1C73BD5529EEED04001B1CF8 /* TabViewModel.swift in Sources */,
 				1C73BD5329EE9C0E001B1CF8 /* WebViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -51,6 +51,7 @@ struct ControlButtonsView: View {
                 Spacer()
             }
             .padding(.bottom, 30)
+            .padding(.top, 15)
         }
     }
 }
