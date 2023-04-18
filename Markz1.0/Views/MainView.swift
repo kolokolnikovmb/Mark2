@@ -9,13 +9,20 @@ struct MainView: View {
                  // WebViewWrapper для WKWebView
                 WebViewWrapper(url: $mainViewModel.currentURL)
                     .edgesIgnoringSafeArea(.bottom)
-
+                
+                // прогрессбар
+                if mainViewModel.isLoading {
+                    ProgressView(value: mainViewModel.progress)
+                        .frame(height: 2)
+                        .padding(.horizontal)
+                }
 
                     // Адресная строка
                     AddressBarView()
                         .environmentObject(mainViewModel)
                         .padding(.horizontal)
                 
+               
                 // Кнопки управления внизу экрана, потом добавим сюда остальные элементы управления
                 HStack {
                     // Базовые кнопки управления
