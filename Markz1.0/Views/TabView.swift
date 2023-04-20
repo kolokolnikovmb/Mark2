@@ -1,27 +1,13 @@
 import SwiftUI
 
-struct TabView: View {
+struct TabBarView: View {
     @EnvironmentObject var tabViewModel: TabViewModel
 
     var body: some View {
         VStack {
             TabBarView()
-
-            ForEach(0..<tabViewModel.tabs.count, id: \.self) { index in
-                if index == tabViewModel.selectedTabIndex {
-                    MainView()
-                        .environmentObject(tabViewModel.tabs[index])
-                }
-            }
-        }
-    }
-}
-
-struct TabBarView: View {
-    @EnvironmentObject var tabViewModel: TabViewModel
-
-    var body: some View {
-        HStack {
+            
+            
             ForEach(0..<tabViewModel.tabs.count, id: \.self) { index in
                 VStack {
                     Button(action: {
@@ -54,6 +40,7 @@ struct TabBarView: View {
         .padding()
     }
 }
+
 
 extension Array {
     subscript(safe index: Int) -> Element? {

@@ -6,34 +6,21 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack {
-                 // WebViewWrapper для WKWebView
+              
+                // WebViewWrapper для WKWebView
                 WebViewWrapper(url: $mainViewModel.currentURL)
                     .edgesIgnoringSafeArea(.bottom)
                 
-                // прогрессбар
-                if mainViewModel.isLoading {
-                    ProgressView(value: mainViewModel.progress)
-                        .frame(height: 2)
-                        .padding(.horizontal)
-                }
+                // Адресная строка
+                AddressBarView()
+                    .environmentObject(mainViewModel)
 
-                    // Адресная строка
-                    AddressBarView()
-                        .environmentObject(mainViewModel)
-                        .padding(.horizontal)
-                
-               
-                // Кнопки управления внизу экрана, потом добавим сюда остальные элементы управления
-                HStack {
-                    // Базовые кнопки управления
-                    ControlButtonsView()
-                        .environmentObject(mainViewModel)
-                }
+                // Базовые кнопки управления
+                ControlButtonsView()
+                    .environmentObject(mainViewModel)
             }
-            .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.1), Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom))
-                        .edgesIgnoringSafeArea(.bottom)
-                        
-            //.navigationTitle("Markz")
+            .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.3), Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom))
+            //.navigationTitle("Mark2 Browser")
         }
     }
 }

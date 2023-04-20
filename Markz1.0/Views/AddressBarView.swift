@@ -7,27 +7,23 @@ struct AddressBarView: View {
     var body: some View {
         HStack {
             TextField("Введите адрес", text: $inputURL, onCommit: {
-                if let url = URL(string: inputURL) {
-                    mainViewModel.loadUrl(url: url)
-                }
+                mainViewModel.currentURL = URL(string: inputURL)
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
-            .keyboardType(.webSearch)
-            .autocapitalization(.none)
-            .disableAutocorrection(true)
-            .padding(.trailing)
+            .padding()
 
             Button(action: {
-                mainViewModel.reload()
+                mainViewModel.currentURL = URL(string: inputURL)
             }) {
-                Image(systemName: "arrow.clockwise")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
+                Image(systemName: "arrow.right")
             }
-            .buttonStyle(PlainButtonStyle())
-            .foregroundColor(.gray)
-            .padding(.leading, -8)
+            .padding(.trailing)
         }
+    }
+}
+
+struct AddressBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddressBarView().environmentObject(MainViewModel())
     }
 }

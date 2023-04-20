@@ -4,54 +4,37 @@ struct ControlButtonsView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
 
     var body: some View {
-        VStack {
-            //Spacer()
-            HStack {
-                Button(action: {
-                    mainViewModel.goBack()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .disabled(!mainViewModel.canGoBack)
-                }
-                .buttonStyle(PlainButtonStyle())
-                .foregroundColor(.gray)
-                .padding(.leading, 30)
-
-                
-                Button(action: {
-                    mainViewModel.goForward()
-                }) {
-                    Image(systemName: "chevron.right")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .disabled(!mainViewModel.canGoForward)
-                }
-                .buttonStyle(PlainButtonStyle())
-                .foregroundColor(.gray)
-                .padding(.leading, 30)
-                
-                // Spacer()
-                
-                Button(action: {
-                    mainViewModel.goHome()
-                }) {
-                    Image(systemName: "house")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                }
-                .buttonStyle(PlainButtonStyle())
-                .foregroundColor(.gray)
-                .padding(.leading, 70)
-                //.position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-                Spacer()
+        HStack {
+            Button(action: {
+                mainViewModel.goBack()
+            }) {
+                Image(systemName: "chevron.left")
+                    .disabled(!mainViewModel.canGoBack)
+                    .buttonStyle(PlainButtonStyle())
             }
-            .padding(.bottom, 30)
-            .padding(.top, 15)
+
+            Button(action: {
+                mainViewModel.goForward()
+            }) {
+                Image(systemName: "chevron.right")
+                    .disabled(!mainViewModel.canGoForward)
+                    .buttonStyle(PlainButtonStyle())
+            }
+
+            Button(action: {
+                mainViewModel.reload()
+            }) {
+                Image(systemName: "arrow.clockwise")
+                    .buttonStyle(PlainButtonStyle())
+            }
+
+            Button(action: {
+                mainViewModel.goHome()
+            }) {
+                Image(systemName: "house")
+                    .buttonStyle(PlainButtonStyle())
+            }
         }
+        .padding()
     }
 }
