@@ -1,49 +1,36 @@
 import SwiftUI
 
-struct TabBarView: View {
+struct TabView: View {
     @EnvironmentObject var tabViewModel: TabViewModel
 
     var body: some View {
-        VStack {
-            TabBarView()
-            
-            
+        HStack {
             ForEach(0..<tabViewModel.tabs.count, id: \.self) { index in
-                VStack {
-                    Button(action: {
-                        tabViewModel.selectedTabIndex = index
-                    }) {
-                        Text(tabViewModel.tabs[index].currentURL?.host ?? "Tab \(index + 1)")
-                    }
-                    .background(index == tabViewModel.selectedTabIndex ? Color.blue : Color.clear)
-                    .cornerRadius(8)
-
-                    if tabViewModel.tabs.count > 1 {
-                        Button(action: {
-                            tabViewModel.closeTab(at: index)
-                        }) {
-                            Image(systemName: "xmark.circle")
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                        }
-                        .offset(x: -10, y: -5)
-                    }
+                Button(action: {
+                    tabViewModel.selectedTabIndex = index
+                }) {
+                    Text("Tab \(index + 1)")
+                        .fontWeight(index == tabViewModel.selectedTabIndex ? .bold : .regular)
                 }
+                .padding(.horizontal)
             }
+
+            Spacer()
+
             Button(action: {
                 tabViewModel.addTab()
             }) {
                 Image(systemName: "plus")
             }
-            .padding(.leading)
+            .padding(.horizontal)
         }
-        .padding()
+        .padding(.top, 8)
+        .padding(.bottom, 8)
     }
 }
 
-
-extension Array {
-    subscript(safe index: Int) -> Element? {
-        return indices ~= index ? self[index] : nil
+struct TabView_Previews: PreviewProvider {
+    static var previews: some View {
+        TabView().environmentObject(TabViewModel())
     }
 }

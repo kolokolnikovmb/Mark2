@@ -2,11 +2,17 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var mainViewModel = MainViewModel()
+    @StateObject private var tabViewModel = TabViewModel()
 
     var body: some View {
         NavigationView {
             VStack {
-              
+                // Здесь добавьте TabView
+                
+              /*  TabView()
+                    .environmentObject(tabViewModel)
+              */
+                
                 // WebViewWrapper для WKWebView
                 WebViewWrapper(url: $mainViewModel.currentURL)
                     .edgesIgnoringSafeArea(.bottom)

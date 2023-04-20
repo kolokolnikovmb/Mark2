@@ -15,11 +15,12 @@ struct WebViewWrapper: UIViewRepresentable {
     }
 
     func updateUIView(_ webView: WKWebView, context: Context) {
-        if let url = url {
+        if let url = url, webView.url != url {
             let request = URLRequest(url: url)
             webView.load(request)
         }
     }
+    
 
     class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebViewWrapper
