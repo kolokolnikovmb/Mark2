@@ -6,6 +6,12 @@ class MainViewModel: NSObject, ObservableObject {
     @Published var canGoBack: Bool = false
     @Published var canGoForward: Bool = false
     
+    private var tabViewModel: TabViewModel
+    
+    init(tabViewModel: TabViewModel) {
+            self.tabViewModel = tabViewModel
+        }
+    
     private var webView: WKWebView?
     
     func setup(webView: WKWebView) {
@@ -37,6 +43,10 @@ class MainViewModel: NSObject, ObservableObject {
             let request = URLRequest(url: homeURL)
             webView?.load(request)
         }
+    }
+    
+    func updateTitle(for urlString: String, title: String) {
+        tabViewModel.updateTitle(for: urlString, title: title)
     }
 }
 

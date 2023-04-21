@@ -2,7 +2,8 @@ import SwiftUI
 
 struct ControlButtonsView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-
+    @EnvironmentObject var tabViewModel: TabViewModel
+    
     var body: some View {
         HStack {
             Button(action: {
@@ -34,6 +35,14 @@ struct ControlButtonsView: View {
                 Image(systemName: "house")
                     .buttonStyle(PlainButtonStyle())
             }
+            
+            Button(action: {
+                            tabViewModel.addTab()
+                        }) {
+                            Image(systemName: "plus")
+                                .buttonStyle(PlainButtonStyle())
+                        }
+            
         }
         .padding()
     }

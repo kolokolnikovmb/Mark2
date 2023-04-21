@@ -48,9 +48,3 @@ struct AddressBarView: View {
             return nil
     }
 }
-
-struct AddressBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddressBarView().environmentObject(MainViewModel())
-    }
-}

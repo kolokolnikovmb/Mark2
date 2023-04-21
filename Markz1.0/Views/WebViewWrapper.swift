@@ -23,7 +23,6 @@ struct WebViewWrapper: UIViewRepresentable {
         }
     }
     
-
     class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebViewWrapper
 
@@ -32,7 +31,9 @@ struct WebViewWrapper: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            parent.url = webView.url
+            if let title = webView.title, let url = webView.url {
+                parent.mainViewModel.updateTitle(for: url.absoluteString, title: title)
+            }
         }
-    }
-}
+    } // Закрывающая фигурная скобка для класса Coordinator
+} // Закрывающая фигурная скобка для структуры WebViewWrapper

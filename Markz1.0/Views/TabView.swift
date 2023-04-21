@@ -2,35 +2,36 @@ import SwiftUI
 
 struct TabView: View {
     @EnvironmentObject var tabViewModel: TabViewModel
+    @EnvironmentObject var mainViewModel: MainViewModel
 
     var body: some View {
-        HStack {
-            ForEach(0..<tabViewModel.tabs.count, id: \.self) { index in
-                Button(action: {
-                    tabViewModel.selectedTabIndex = index
-                }) {
-                    Text("Tab \(index + 1)")
-                        .fontWeight(index == tabViewModel.selectedTabIndex ? .bold : .regular)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 16)], spacing: 16) {
+                    ForEach(tabViewModel.tabs) { tab in
+                        // Изменено: использование TabThumbnailView
+                        TabThumbnailView(tab: tab, closeAction: {
+                            tabViewModel.removeTab(tab)
+                        })
+                        .onTapGesture {
+                            if let index = tabViewModel.tabs.firstIndex(where: { $0.id == tab.id }) {
+                                tabViewModel.setCurrentTab(at: index)
+                            }
+                        }
+                    }
                 }
-                .padding(.horizontal)
+                .padding()
             }
-
-            Spacer()
-
+            .navigationTitle("Tabs")
             Button(action: {
                 tabViewModel.addTab()
             }) {
-                Image(systemName: "plus")
+                HStack {
+                    Image(systemName: "plus")
+                    Text("New Tab")
+                }
             }
-            .padding(.horizontal)
+            .padding()
         }
-        .padding(.top, 8)
-        .padding(.bottom, 8)
-    }
-}
-
-struct TabView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabView().environmentObject(TabViewModel())
     }
 }
