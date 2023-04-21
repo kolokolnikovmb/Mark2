@@ -16,6 +16,7 @@ struct MainView: View {
                 // WebViewWrapper для WKWebView
                 WebViewWrapper(url: $mainViewModel.currentURL)
                     .edgesIgnoringSafeArea(.bottom)
+                    .environmentObject(mainViewModel)
                 
                 // Адресная строка
                 AddressBarView()

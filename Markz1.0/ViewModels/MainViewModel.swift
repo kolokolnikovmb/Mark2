@@ -13,6 +13,13 @@ class MainViewModel: NSObject, ObservableObject {
         webView.navigationDelegate = self
     }
     
+    func loadUrl(url: URL) {
+        if webView?.url != url {
+            let request = URLRequest(url: url)
+            webView?.load(request)
+        }
+    }
+    
     func goBack() {
         webView?.goBack()
     }

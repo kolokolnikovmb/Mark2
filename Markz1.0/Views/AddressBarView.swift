@@ -2,14 +2,14 @@ import SwiftUI
 
 struct AddressBarView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-    @State private var inputURL: String = ""
+    @State private var text: String = ""
 
     var body: some View {
         HStack {
-            TextField("Введите адрес", text: $inputURL, onCommit: {
-                if let preparedUrl = prepareUrl(input: inputURL) {
-                                    mainViewModel.currentURL = preparedUrl
-                                }
+            TextField("Enter URL or search query...", text: $text, onCommit: {
+                if let url = prepareUrl(input: text) {
+                    mainViewModel.loadUrl(url: url)
+                }
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
@@ -17,13 +17,21 @@ struct AddressBarView: View {
             .disableAutocorrection(true)
 
             Button(action: {
-                mainViewModel.currentURL = URL(string: inputURL)
+                if let url = prepareUrl(input: text) {
+                        mainViewModel.loadUrl(url: url)
+                    }
             }) {
                 Image(systemName: "arrow.right")
             }
             .padding(.trailing)
         }
     }
+    
+    func onCommit() {
+            if let url = prepareUrl(input: text) {
+                mainViewModel.loadUrl(url: url)
+            }
+        }
     
     func prepareUrl(input: String) -> URL? {
             if let url = URL(string: input), url.scheme != nil {

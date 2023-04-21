@@ -3,6 +3,7 @@ import WebKit
 
 struct WebViewWrapper: UIViewRepresentable {
     @Binding var url: URL?
+    @EnvironmentObject var mainViewModel: MainViewModel
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -11,6 +12,7 @@ struct WebViewWrapper: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
         webView.navigationDelegate = context.coordinator
+        mainViewModel.setup(webView: webView)
         return webView
     }
 
