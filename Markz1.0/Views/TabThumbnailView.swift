@@ -4,13 +4,22 @@ import WebKit
 struct TabThumbnailView: View {
     var tab: Tab
     var closeAction: () -> Void
+    @ObservedObject private var webViewSnapshot = WebViewSnapshot()
     
     var body: some View {
         VStack {
             ZStack(alignment: .topTrailing) {
-                GeometryReader { geometry in // добавлено
-                    tab.webView
-                        .frame(width: geometry.size.width, height: geometry.size.height) // изменено
+                GeometryReader { geometry in
+                    if let image = webViewSnapshot.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    } else {
+                        Color.gray
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                        webViewSnapshot.takeSnapshot(webView: tab.webView)
+                    }
                 }
                 
                 Button(action: closeAction) {
