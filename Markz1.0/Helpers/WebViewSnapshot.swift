@@ -1,16 +1,17 @@
-import SwiftUI
 import WebKit
+import SwiftUI
 
-class WebViewSnapshot: ObservableObject {
-    @Published var image: UIImage?
-
-    func takeSnapshot(webView: WKWebView) {
+class WebViewSnapshot {
+    func takeSnapshot(webView: WKWebView, completion: @escaping (UIImage?) -> Void) {
         let configuration = WKSnapshotConfiguration()
+        configuration.rect = CGRect(origin: .zero, size: webView.scrollView.contentSize)
+
         webView.takeSnapshot(with: configuration) { image, error in
             if let error = error {
-                print("Error taking snapshot: \(error.localizedDescription)")
+                print("Error taking snapshot: \(error)")
+                completion(nil)
             } else {
-                self.image = image
+                completion(image)
             }
         }
     }

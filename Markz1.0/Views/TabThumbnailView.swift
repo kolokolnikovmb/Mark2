@@ -4,21 +4,29 @@ import WebKit
 struct TabThumbnailView: View {
     var tab: Tab
     var closeAction: () -> Void
-    @ObservedObject private var webViewSnapshot = WebViewSnapshot()
+    
+    @State private var snapshot: UIImage?
+    
+    private let webViewSnapshot = WebViewSnapshot()
     
     var body: some View {
         VStack {
             ZStack(alignment: .topTrailing) {
                 GeometryReader { geometry in
-                    if let image = webViewSnapshot.image {
-                        Image(uiImage: image)
+                    if let snapshot = snapshot {
+                        Image(uiImage: snapshot)
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .scaledToFill()
                             .frame(width: geometry.size.width, height: geometry.size.height)
+                            .clipped()
                     } else {
                         Color.gray
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                        webViewSnapshot.takeSnapshot(webView: tab.webView)
+                    }
+                }
+                .onAppear {
+                    webViewSnapshot.takeSnapshot(webView: tab.webView) { image in
+                        snapshot = image
                     }
                 }
                 
