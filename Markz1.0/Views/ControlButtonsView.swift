@@ -4,6 +4,8 @@ struct ControlButtonsView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     @EnvironmentObject var tabViewModel: TabViewModel
     
+    @State private var isTabViewPresented = false
+    
     var body: some View {
         HStack {
             Button(action: {
@@ -41,6 +43,18 @@ struct ControlButtonsView: View {
                         }) {
                             Image(systemName: "plus")
                                 .buttonStyle(PlainButtonStyle())
+                        }
+            
+            Button(action: {
+                            isTabViewPresented = true
+                        }) {
+                            Image(systemName: "square.on.square")
+                                .buttonStyle(PlainButtonStyle())
+                        }
+                        .sheet(isPresented: $isTabViewPresented) {
+                            TabView()
+                                .environmentObject(tabViewModel)
+                                .environmentObject(mainViewModel)
                         }
             
         }
