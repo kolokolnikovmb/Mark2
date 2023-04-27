@@ -1,23 +1,19 @@
 import Foundation
 import Combine
-import WebKit // Добавлено
+import WebKit
 
-struct Tab: Identifiable {
-    let id: UUID
-    let webView: WKWebView
-    var title: String
-}
-
-class TabViewModel: ObservableObject {
+class TabViewModel: NSObject, ObservableObject {
     @Published var tabs: [Tab] = []
     @Published var currentTab: Tab?
 
-    init() {
+    override init() {
+        super.init()
         addTab()
     }
 
     func addTab() {
-        let webView = WKWebView() // исправлено
+        let webView = WKWebView()
+        webView.navigationDelegate = self
         let newTab = Tab(id: UUID(), webView: webView, title: "New Tab")
         tabs.append(newTab)
         currentTab = newTab
@@ -33,13 +29,20 @@ class TabViewModel: ObservableObject {
     }
     
     func updateTitle(for urlString: String, title: String) {
-        if let index = tabs.firstIndex(where: { $0.webView.url?.absoluteString == urlString }) { // исправлено
+        if let index = tabs.firstIndex(where: { $0.webView.url?.absoluteString == urlString }) {
             tabs[index].title = title
-            // saveTabs() удалено, так как функция не реализована
         }
     }
 
     func setCurrentTab(at index: Int) {
         currentTab = tabs[index]
+    }
+}
+
+extension TabViewModel: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if let title = webView.title, let urlString = webView.url?.absoluteString {
+            updateTitle(for: urlString, title: title)
+        }
     }
 }

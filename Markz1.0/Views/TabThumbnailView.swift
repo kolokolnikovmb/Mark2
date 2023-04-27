@@ -2,9 +2,9 @@ import SwiftUI
 import WebKit
 
 struct TabThumbnailView: View {
-    var tab: Tab
+    @ObservedObject var tab: Tab
     var closeAction: () -> Void
-    
+    var title: String //Измените структуру TabThumbnailView, чтобы использовать Binding к переменной title
     @State private var snapshot: UIImage?
     
     private let webViewSnapshot = WebViewSnapshot()

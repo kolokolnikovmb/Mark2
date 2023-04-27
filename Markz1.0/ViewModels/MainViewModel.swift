@@ -47,6 +47,7 @@ class MainViewModel: NSObject, ObservableObject {
     
     func updateTitle(for urlString: String, title: String) {
         tabViewModel.updateTitle(for: urlString, title: title)
+        print("Updating title for URL: \(urlString) - Title: \(title)") // проверка работы тайтла
     }
 }
 

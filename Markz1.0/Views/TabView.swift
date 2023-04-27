@@ -12,7 +12,7 @@ struct TabView: View {
                         // Изменено: использование TabThumbnailView
                         TabThumbnailView(tab: tab, closeAction: {
                             tabViewModel.removeTab(tab)
-                        })
+                        }, title: tab.title)
                         .onTapGesture {
                             if let index = tabViewModel.tabs.firstIndex(where: { $0.id == tab.id }) {
                                 tabViewModel.setCurrentTab(at: index)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C50246C29F2BC5F00331D4B /* TabThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50246B29F2BC5F00331D4B /* TabThumbnailView.swift */; };
 		1C50247229F6EC4B00331D4B /* WebViewSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50247129F6EC4B00331D4B /* WebViewSnapshot.swift */; };
+		1C50247629FAB9F500331D4B /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50247529FAB9F500331D4B /* Tab.swift */; };
 		1C73BD1E29EE8903001B1CF8 /* Markz1_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73BD1D29EE8903001B1CF8 /* Markz1_0App.swift */; };
 		1C73BD2029EE8903001B1CF8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73BD1F29EE8903001B1CF8 /* MainView.swift */; };
 		1C73BD2229EE8905001B1CF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C73BD2129EE8905001B1CF8 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		1C50246B29F2BC5F00331D4B /* TabThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThumbnailView.swift; sourceTree = "<group>"; };
 		1C50247129F6EC4B00331D4B /* WebViewSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewSnapshot.swift; sourceTree = "<group>"; };
+		1C50247529FAB9F500331D4B /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tab.swift; path = Markz1.0/Views/Tab.swift; sourceTree = SOURCE_ROOT; };
 		1C73BD1A29EE8903001B1CF8 /* Markz1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Markz1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C73BD1D29EE8903001B1CF8 /* Markz1_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markz1_0App.swift; sourceTree = "<group>"; };
 		1C73BD1F29EE8903001B1CF8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		1C73BD4929EE8EFE001B1CF8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1C50247529FAB9F500331D4B /* Tab.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				1C73BD5729EEF14A001B1CF8 /* TabView.swift in Sources */,
 				1C73BD2029EE8903001B1CF8 /* MainView.swift in Sources */,
 				1C73BD4F29EE91ED001B1CF8 /* ControlButtonsView.swift in Sources */,
+				1C50247629FAB9F500331D4B /* Tab.swift in Sources */,
 				1C73BD1E29EE8903001B1CF8 /* Markz1_0App.swift in Sources */,
 				1C73BD5529EEED04001B1CF8 /* TabViewModel.swift in Sources */,
 				1C50247229F6EC4B00331D4B /* WebViewSnapshot.swift in Sources */,
